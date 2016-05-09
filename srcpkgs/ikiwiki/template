@@ -1,0 +1,44 @@
+# XXX fedora: http://pkgs.fedoraproject.org/cgit/rpms/ikiwiki.git/tree/ikiwiki.spec
+# XXX perl-modules required:
+#           Warning: prerequisite CGI::FormBuilder 3.02.02 not found.
+#           Warning: prerequisite CGI::Session 0 not found.
+# XXX fedora: include self documentation:
+#        - supposed to be done via target "doc_install" via "make pure_install"
+#        - also called here, but more recent version
+#        - we don't see anything
+#        - /usr/share/ikiwiki/locale/ : from target "doc_install" too, but not present
+# XXX fedora: remove #! in /etc/ikiwiki config files
+# XXX fedora: s/lib/libexec/
+# XXX fedora: python stuff
+# XXX "Unversioned shebang replaced by '#!/usr/bin/python2.7': /usr/local/lib/ikiwiki/plugins/rst"
+# XXX remove packaging notes
+
+# Template file for 'ikiwiki'
+pkgname=ikiwiki
+version=3.20170111
+revision=1
+build_style=perl-module
+configure_args="PREFIX=${PREFIX}"
+noarch=yes
+conf_files="/etc/ikiwiki/auto-blog.setup /etc/ikiwiki/auto.setup /etc/ikiwiki/wikilist"
+hostmakedepends="perl"
+makedepends="${hostmakedepends}
+ perl-TimeDate perl-HTML-Parser perl-HTML-Scrubber perl-HTML-Template perl-Mail-Sendmail
+ perl-Text-Markdown perl-URI perl-XML-Simple perl-YAML-LibYAML"
+depends="${makedepends}"
+short_desc="Wiki compiler into HTML pages"
+maintainer="yopito <pierre.bourgin@free.fr>"
+license="GPL-2, BSD"
+homepage="http://ikiwiki.info/"
+distfiles="${DEBIAN_SITE}/main/i/${pkgname}/${pkgname}_${version}.tar.xz"
+checksum=5f0f99a4f4a5f17046e4601d628424cb2877766b4ef9bfe1c2db1941f6f7a701
+
+pre_configure() {
+	# do not install into sbin/
+	sed -e 's,\$(PREFIX)/sbin,$(PREFIX)/bin,' -i ${wrksrc}/Makefile.PL
+}
+
+post_install() {
+	# remove w3m stuff since no perl-CGI support at this point
+	rm -rf ${DESTDIR}/usr/lib/w3m/
+}
