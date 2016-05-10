@@ -1,0 +1,16 @@
+# Template file for 'perl-Test-EOL'
+pkgname=perl-Test-EOL
+version=2.00
+revision=1
+wrksrc="${pkgname/perl-/}-${version}"
+noarch=yes
+build_style=perl-module
+hostmakedepends="perl"
+makedepends="${hostmakedepends}"
+depends="${makedepends}"
+short_desc="Check the correct line endings in your project"
+maintainer="yopito <pierre.bourgin@free.fr>"
+license="GPL-1, Artistic"
+homepage="http://search.cpan.org/dist/Test-EOL/"
+distfiles="${CPAN_SITE}/Test/${pkgname/perl-/}-${version}.tar.gz"
+checksum=8e7f7e5d07d3be0f1d7d51bcda8af0962767eb2897fd48994df274c0f5ed6b50
