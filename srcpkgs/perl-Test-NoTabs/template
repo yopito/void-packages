@@ -1,0 +1,16 @@
+# Template file for 'perl-Test-NoTabs'
+pkgname=perl-Test-NoTabs
+version=2.02
+revision=1
+wrksrc="${pkgname/perl-/}-${version}"
+noarch=yes
+build_style=perl-module
+hostmakedepends="perl"
+makedepends="${hostmakedepends}"
+depends="${makedepends}"
+short_desc="Check the presence of tabs in your project"
+maintainer="yopito <pierre.bourgin@free.fr>"
+license="GPL-1, Artistic"
+homepage="http://search.cpan.org/dist/Test-NoTabs/"
+distfiles="${CPAN_SITE}/Test/${pkgname/perl-/}-${version}.tar.gz"
+checksum=fb75c6a38721f0169e11c1e7dbe5329ed7216885a0b01123f342dd86d3356030
