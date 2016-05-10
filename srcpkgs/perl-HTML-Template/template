@@ -1,0 +1,16 @@
+# Template file for 'perl-HTML-Template'
+pkgname=perl-HTML-Template
+version=2.97
+revision=1
+wrksrc="${pkgname/perl-/}-${version}"
+noarch=yes
+build_style=perl-module
+hostmakedepends="perl"
+makedepends="${hostmakedepends}"
+depends="${makedepends}"
+short_desc="Perl module to use HTML Templates"
+maintainer="yopito <pierre.bourgin@free.fr>"
+license="GPL-1, Arstictic"
+homepage="http://search.cpan.org/dist/HTML-Template/"
+distfiles="${CPAN_SITE}/HTML/${pkgname/perl-/}-${version}.tar.gz"
+checksum=6547af61f3aa85793f8616190938d677d7995fb3b720c16258040bc935e2129f
