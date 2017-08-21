@@ -15,7 +15,7 @@
 
 # Template file for 'ikiwiki'
 pkgname=ikiwiki
-version=3.20170111
+version=3.20170622
 revision=1
 build_style=perl-module
 configure_args="PREFIX=${PREFIX}"
@@ -31,7 +31,7 @@ maintainer="yopito <pierre.bourgin@free.fr>"
 license="GPL-2, BSD"
 homepage="http://ikiwiki.info/"
 distfiles="${DEBIAN_SITE}/main/i/${pkgname}/${pkgname}_${version}.tar.xz"
-checksum=5f0f99a4f4a5f17046e4601d628424cb2877766b4ef9bfe1c2db1941f6f7a701
+checksum=0eb3d8a85ac56da11b410eba4ff99b8611b4afbfebfc59292b651de3f3ca8bfe
 
 pre_configure() {
 	# do not install into sbin/
