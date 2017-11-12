@@ -1,7 +1,7 @@
 # Template file for 'glibc'
 pkgname=glibc
 version=2.26
-revision=3
+revision=4
 bootstrap=yes
 short_desc="The GNU C library"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
@@ -131,12 +131,14 @@ do_install() {
 	make install_root=${DESTDIR} install
 
 	# create /etc/default/libc-locales
+	# enable "en_US.UTF-8 UTF-8": VoidLinux's default lang (/etc/locale.conf)
 	vinstall ${FILESDIR}/libc-locales 644 etc/default
 	cp ${wrksrc}/localedata/SUPPORTED ${wrksrc}/build
 	sed -i	-e "s|/| |g" \
 		-e 's|\\| |g' \
 		-e "s|SUPPORTED-LOCALES=||" \
 		-e "s|^|#|g" ${wrksrc}/build/SUPPORTED
+	sed -i -e 's|^#\(en_US.UTF-8 UTF-8\)|\1|' ${wrksrc}/build/SUPPORTED
 	cat ${wrksrc}/build/SUPPORTED >> ${DESTDIR}/etc/default/libc-locales
 
 	# ldd is a bash script, so make it run as such.
