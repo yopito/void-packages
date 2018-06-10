@@ -18,6 +18,7 @@ pkgname=ikiwiki
 version=3.20180311
 revision=1
 build_style=perl-module
+wrksrc=IkiWiki-${version}
 configure_args="PREFIX=${PREFIX}"
 noarch=yes
 conf_files="/etc/ikiwiki/auto-blog.setup /etc/ikiwiki/auto.setup /etc/ikiwiki/wikilist"
